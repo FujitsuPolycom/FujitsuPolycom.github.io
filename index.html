@@ -13,12 +13,12 @@
             touch-action: none;
             background: #87CEEB;
         }
-        
+
         #gameCanvas {
             display: block;
             background: linear-gradient(to bottom, #87CEEB 0%, #98D8E8 100%);
         }
-        
+
         #gameInfo {
             position: absolute;
             top: 10px;
@@ -26,9 +26,10 @@
             color: white;
             font-size: 18px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: 10;
         }
-        
-        #gameOver {
+
+        #gameOver, #startScreen {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -38,21 +39,15 @@
             padding: 30px;
             border-radius: 10px;
             text-align: center;
+            z-index: 20;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            min-width: 300px;
+        }
+
+        #gameOver {
             display: none;
         }
-        
-        #startScreen {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        
+
         button {
             padding: 10px 20px;
             font-size: 16px;
@@ -62,10 +57,240 @@
             border-radius: 5px;
             cursor: pointer;
             margin: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: background 0.3s ease;
         }
-        
+
         button:hover {
             background: #45a049;
+        }
+
+        #mobileControls {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+            z-index: 25;
+        }
+
+        #mobileControls button {
+            width: 80px;
+            height: 60px;
+            font-size: 24px;
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        /* --- Sliders Styling --- */
+        #difficultySliders {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            max-height: calc(100% - 20px);
+            overflow-y: auto;
+            z-index: 15;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 8px 15px;
+            align-items: center;
+            width: 250px;
+        }
+
+        #difficultySliders label {
+            white-space: nowrap;
+            text-align: right;
+            padding-right: 5px;
+        }
+
+        #difficultySliders input[type="range"] {
+            width: 150px;
+            -webkit-appearance: none;
+            height: 8px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+            border-radius: 5px;
+        }
+
+        #difficultySliders input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        #difficultySliders input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        #difficultySliders span {
+            font-weight: bold;
+            color: #76FF03;
+        }
+
+        #toggleSlidersBtn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+            background: #555;
+            z-index: 20;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        #toggleSlidersBtn:hover {
+            background: #666;
+        }
+
+        /* --- Intro Logo Styling --- */
+        #introLogo {
+            margin-bottom: 20px;
+            position: relative;
+            padding: 10px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #catTag {
+            background: #CD853F;
+            border-radius: 50% / 20%;
+            padding: 15px 30px;
+            margin: 0 auto;
+            width: fit-content;
+            font-size: 4em;
+            font-weight: bold;
+            color: #222;
+            text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+            letter-spacing: 3px;
+            position: relative;
+            display: inline-block;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+            border: 3px solid #8B4513;
+            transform: rotate(-3deg);
+        }
+
+        #tagHole {
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: #222;
+            border-radius: 50%;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.7);
+        }
+
+        #theAdventurer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-10deg);
+            font-family: 'Impact', sans-serif;
+            font-size: 2.5em;
+            color: rgba(255, 255, 255, 0.4);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
+            pointer-events: none;
+            white-space: nowrap;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- Life Bar Styling --- */
+        #lifeBarContainer {
+            width: 150px;
+            height: 20px;
+            background-color: #333;
+            border: 2px solid #555;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        #lifeBar {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(to right, #dc143c, #ff4500);
+            transition: width 0.2s ease-out;
+        }
+
+        /* --- Catnip Power-up Effects --- */
+        #catnipFlash {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8); /* White flash */
+            opacity: 0;
+            z-index: 100; /* On top of everything */
+            pointer-events: none; /* Allows clicks to pass through */
+            transition: opacity 0.1s ease-out; /* Smooth flash */
+        }
+
+        #catnipText {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Impact', sans-serif;
+            font-size: 5em;
+            color: #7FFF00; /* Chartreuse/bright green */
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.7), 0 0 20px rgba(127,255,0,0.8); /* Glow effect */
+            opacity: 0;
+            z-index: 101;
+            pointer-events: none;
+            white-space: nowrap;
+            transition: opacity 0.2s ease-out;
+        }
+
+        /* Class for screen shake effect */
+        .shake {
+            animation: shake 0.2s cubic-bezier(.36,.07,.19,.97) both;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        @keyframes shake {
+            10%, 90% {
+                transform: translate3d(-1px, 0, 0);
+            }
+            20%, 80% {
+                transform: translate3d(2px, 0, 0);
+            }
+            30%, 50%, 70% {
+                transform: translate3d(-4px, 0, 0);
+            }
+            40%, 60% {
+                transform: translate3d(4px, 0, 0);
+            }
         }
     </style>
 </head>
@@ -74,70 +299,219 @@
     <div id="gameInfo">
         <div>Score: <span id="score">0</span></div>
         <div>High Score: <span id="highScore">0</span></div>
+        <div>Distance: <span id="distance">0</span>m</div>
+        <div>Life: <span id="currentLife">100</span>%</div>
+        <div id="lifeBarContainer">
+            <div id="lifeBar"></div>
+        </div>
     </div>
-    
+
     <div id="startScreen">
-        <h2>Newton's Adventure</h2>
+        <div id="introLogo">
+            <div id="catTag">
+                <span id="tagHole"></span>
+                DOOBY
+            </div>
+            <div id="theAdventurer">THE ADVENTURER</div>
+        </div>
+
         <p>You are Newton (Dooby), the brave black cat!</p>
         <p>Jump over dangers: Mean cats, friendly dogs, and scary vacuums!</p>
         <p>Jump on furniture to stay safe</p>
+        <p><strong>Controls:</strong></p>
+        <p><strong>Space/Tap:</strong> Jump (double tap/press for double jump)</p>
+        <p><strong>A/Left Arrow:</strong> Move Left</p>
+        <p><strong>D/Right Arrow:</strong> Move Right</p>
         <button onclick="startGame()">Start Game</button>
-        <p style="font-size: 12px;">Tap to jump!</p>
     </div>
-    
+
     <div id="gameOver">
         <h2>Game Over!</h2>
         <p>Score: <span id="finalScore">0</span></p>
         <button onclick="restartGame()">Play Again</button>
     </div>
 
+    <div id="mobileControls">
+        <button id="leftBtn" ontouchstart="movePlayer(-1)" ontouchend="stopPlayerMovement()">&#9664;</button>
+        <button id="rightBtn" ontouchstart="movePlayer(1)" ontouchend="stopPlayerMovement()">&#9654;</button>
+    </div>
+
+    <button id="toggleSlidersBtn" onclick="toggleSliders()">Toggle Sliders</button>
+    <div id="difficultySliders">
+        <h3>Adjust Difficulty</h3>
+        <div>
+            <label for="initialSpeedSlider">Game Speed:</label>
+            <input type="range" id="initialSpeedSlider" min="1" max="10" value="4" step="0.5" oninput="updateDifficulty()">
+            <span id="initialSpeedValue">4</span>
+        </div>
+        <div>
+            <label for="speedIntervalSlider">Speed Increase Freq:</label>
+            <input type="range" id="speedIntervalSlider" min="300" max="2000" value="900" step="50" oninput="updateDifficulty()">
+            <span id="speedIntervalValue">900</span>
+        </div>
+        <div>
+            <label for="speedAmountSlider">Speed Increase Amt:</label>
+            <input type="range" id="speedAmountSlider" min="0.01" max="0.5" value="0.05" step="0.01" oninput="updateDifficulty()">
+            <span id="speedAmountValue">0.05</span>
+        </div>
+        <div>
+            <label for="furnitureSpawnSlider">Furniture Spawn:</label>
+            <input type="range" id="furnitureSpawnSlider" min="100" max="500" value="180" step="10" oninput="updateDifficulty()">
+            <span id="furnitureSpawnValue">180</span>
+        </div>
+        <div>
+            <label for="enemySpawnSlider">Enemy Spawn:</label>
+            <input type="range" id="enemySpawnSlider" min="50" max="300" value="150" step="10" oninput="updateDifficulty()">
+            <span id="enemySpawnValue">150</span>
+        </div>
+        <div>
+            <label for="catnipSpawnIntervalSlider">Catnip Freq:</label>
+            <input type="range" id="catnipSpawnIntervalSlider" min="200" max="1000" value="500" step="20" oninput="updateDifficulty()">
+            <span id="catnipSpawnIntervalValue">500</span>
+        </div>
+        <div>
+            <label for="catnipSpawnChanceSlider">Catnip Chance:</label>
+            <input type="range" id="catnipSpawnChanceSlider" min="0" max="1" value="0.6" step="0.1" oninput="updateDifficulty()">
+            <span id="catnipSpawnChanceValue">0.6</span>
+        </div>
+        <div>
+            <label for="gravitySlider">Gravity:</label>
+            <input type="range" id="gravitySlider" min="0.1" max="1" value="0.5" step="0.05" oninput="updateDifficulty()">
+            <span id="gravityValue">0.5</span>
+        </div>
+        <div>
+            <label for="jumpForceSlider">Jump Force:</label>
+            <input type="range" id="jumpForceSlider" min="-20" max="-5" value="-12" step="0.5" oninput="updateDifficulty()">
+            <span id="jumpForceValue">-12</span>
+        </div>
+        <div>
+            <label for="doubleJumpForceSlider">Double Jump Force:</label>
+            <input type="range" id="doubleJumpForceSlider" min="-18" max="-5" value="-10" step="0.5" oninput="updateDifficulty()">
+            <span id="doubleJumpForceValue">-10</span>
+        </div>
+        <div>
+            <label for="tripleJumpForceSlider">Triple Jump Force:</label>
+            <input type="range" id="tripleJumpForceSlider" min="-15" max="-3" value="-9" step="0.5" oninput="updateDifficulty()">
+            <span id="tripleJumpForceValue">-9</span>
+        </div>
+        <div>
+            <label for="horizontalSpeedSlider">Horizontal Speed:</label>
+            <input type="range" id="horizontalSpeedSlider" min="1" max="10" value="4" step="0.5" oninput="updateDifficulty()">
+            <span id="horizontalSpeedValue">4</span>
+        </div>
+        <div>
+            <label for="damageOnHitSlider">Damage on Hit (%):</label>
+            <input type="range" id="damageOnHitSlider" min="5" max="50" value="32" step="1" oninput="updateDifficulty()">
+            <span id="damageOnHitValue">32</span>
+        </div>
+        <div>
+            <label for="catnipDamageReductionSlider">Catnip Dmg Red. (%):</label>
+            <input type="range" id="catnipDamageReductionSlider" min="0" max="99" value="75" step="1" oninput="updateDifficulty()">
+            <span id="catnipDamageReductionValue">75</span>
+        </div>
+        <div>
+            <label for="catnipHealthHealSlider">Catnip Health Heal (%):</label>
+            <input type="range" id="catnipHealthHealSlider" min="5" max="100" value="45" step="5" oninput="updateDifficulty()">
+            <span id="catnipHealthHealValue">45</span>
+        </div>
+         <div>
+            <label for="catnipMinSpeedDiffSlider">Catnip Min Speed Diff (%):</label>
+            <input type="range" id="catnipMinSpeedDiffSlider" min="1" max="10" value="3" step="0.5" oninput="updateDifficulty()">
+            <span id="catnipMinSpeedDiffValue">3</span>
+        </div>
+    </div>
+    <div id="catnipFlash"></div>
+    <div id="catnipText">CATNIP BOI!!!!</div>
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
-        
-        // Set canvas size
+
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        
-        // Game variables
+
         let gameRunning = false;
         let score = 0;
         let highScore = localStorage.getItem('highScore') || 0;
-        let speed = 5;
         let frameCount = 0;
-        
-        // Update high score display
+        let distance = 0;
+        let currentLife = 100;
+
+        // Player invincibility/blink after hit
+        let isInvincible = false;
+        let invincibilityDuration = 1000; // 1 second
+        let invincibilityBlinkRate = 100; // Blink every 100ms
+        let lastBlinkTime = 0;
+        let playerVisible = true;
+
+
+        // --- Difficulty Adjustment Variables (now linked to sliders) ---
+        let INITIAL_GAME_SPEED = 4;
+        let SPEED_INCREASE_INTERVAL = 900;
+        let SPEED_INCREASE_AMOUNT = 0.05;
+
+        let FURNITURE_SPAWN_INTERVAL = 180;
+        let ENEMY_SPAWN_INTERVAL = 150;
+
+        let CATNIP_SPAWN_INTERVAL = 500;
+        let CATNIP_SPAWN_CHANCE = 0.6;
+        let CATNIP_HEALTH_HEAL_PERCENT = 45; // New: Health restored by catnip
+        let CATNIP_MIN_SPEED_DIFFERENCE_PERCENT = 3; // New: Catnip moves at least this % slower than player's max backwards speed
+
+        let PLAYER_GRAVITY = 0.5;
+        let PLAYER_JUMP_FORCE = -12;
+        let PLAYER_DOUBLE_JUMP_FORCE = -10;
+        let PLAYER_TRIPLE_JUMP_FORCE = -9;
+        let PLAYER_MAX_HORIZONTAL_SPEED = 4;
+
+        let DAMAGE_ON_HIT_PERCENT = 32;
+        let CATNIP_DAMAGE_REDUCTION_PERCENT = 75;
+        // --- End Difficulty Adjustment Variables ---
+
+        const TRIPLE_JUMP_DURATION = 15000;
+        let speed = INITIAL_GAME_SPEED; // Current game speed
+        let tripleJumpActive = false;
+        let tripleJumpTimeout;
+
         document.getElementById('highScore').textContent = highScore;
-        
-        // Player cat (Newton)
+        const lifeBar = document.getElementById('lifeBar');
+        const currentLifeSpan = document.getElementById('currentLife');
+        const catnipFlashDiv = document.getElementById('catnipFlash');
+        const catnipTextDiv = document.getElementById('catnipText');
+
+
         const player = {
             x: 100,
             y: canvas.height - 150,
             width: 40,
             height: 30,
             velocityY: 0,
-            jumping: false,
+            velocityX: 0,
+            maxHorizontalSpeed: PLAYER_MAX_HORIZONTAL_SPEED,
+            gravity: PLAYER_GRAVITY,
+            jumpForce: PLAYER_JUMP_FORCE,
+            doubleJumpForce: PLAYER_DOUBLE_JUMP_FORCE,
+            tripleJumpForce: PLAYER_TRIPLE_JUMP_FORCE,
+            jumpsAvailable: 1,
             grounded: false,
-            color: '#000'
+            color: '#000',
+            onFurniture: null // New: Reference to the furniture item player is on
         };
-        
-        // Ground level
+
         const ground = {
             y: canvas.height - 100
         };
-        
-        // Arrays for game objects
+
         let furniture = [];
         let enemies = [];
         let clouds = [];
-        
-        // Enemy types
+        let catnips = [];
+
         const enemyTypes = {
-            cat: { color: '#222', width: 35, height: 25, speed: 1.2, points: 10 },
-            dog: { color: '#8B4513', width: 50, height: 35, speed: 0.8, points: 15 },
-            vacuum: { color: '#666', width: 60, height: 40, speed: 0.6, points: 20 }
+            cat: { color: '#222', width: 35, height: 25, speedMultiplier: 1.2, points: 10 },
+            dog: { color: '#8B4513', width: 50, height: 35, speedMultiplier: 0.8, points: 15 },
+            vacuum: { color: '#666', width: 60, height: 40, speedMultiplier: 0.6, points: 20 }
         };
-        
+
         // Initialize clouds
         for (let i = 0; i < 5; i++) {
             clouds.push({
@@ -147,66 +521,235 @@
                 speed: 0.5 + Math.random() * 1
             });
         }
-        
-        // Event listeners
-        canvas.addEventListener('touchstart', jump);
-        canvas.addEventListener('click', jump);
-        window.addEventListener('keydown', (e) => {
-            if (e.code === 'Space') jump();
-        });
-        
-        function jump() {
-            if (gameRunning && !player.jumping && player.grounded) {
-                player.velocityY = -15;
-                player.jumping = true;
-                player.grounded = false;
+
+        // --- Slider Update Function ---
+        function updateDifficulty() {
+            INITIAL_GAME_SPEED = parseFloat(document.getElementById('initialSpeedSlider').value);
+            SPEED_INCREASE_INTERVAL = parseInt(document.getElementById('speedIntervalSlider').value);
+            SPEED_INCREASE_AMOUNT = parseFloat(document.getElementById('speedAmountSlider').value);
+            FURNITURE_SPAWN_INTERVAL = parseInt(document.getElementById('furnitureSpawnSlider').value);
+            ENEMY_SPAWN_INTERVAL = parseInt(document.getElementById('enemySpawnSlider').value);
+            CATNIP_SPAWN_INTERVAL = parseInt(document.getElementById('catnipSpawnIntervalSlider').value);
+            CATNIP_SPAWN_CHANCE = parseFloat(document.getElementById('catnipSpawnChanceSlider').value);
+            PLAYER_GRAVITY = parseFloat(document.getElementById('gravitySlider').value);
+            PLAYER_JUMP_FORCE = parseFloat(document.getElementById('jumpForceSlider').value);
+            PLAYER_DOUBLE_JUMP_FORCE = parseFloat(document.getElementById('doubleJumpForceSlider').value);
+            PLAYER_TRIPLE_JUMP_FORCE = parseFloat(document.getElementById('tripleJumpForceSlider').value);
+            PLAYER_MAX_HORIZONTAL_SPEED = parseFloat(document.getElementById('horizontalSpeedSlider').value);
+            DAMAGE_ON_HIT_PERCENT = parseInt(document.getElementById('damageOnHitSlider').value);
+            CATNIP_DAMAGE_REDUCTION_PERCENT = parseInt(document.getElementById('catnipDamageReductionSlider').value);
+            CATNIP_HEALTH_HEAL_PERCENT = parseInt(document.getElementById('catnipHealthHealSlider').value);
+            CATNIP_MIN_SPEED_DIFFERENCE_PERCENT = parseFloat(document.getElementById('catnipMinSpeedDiffSlider').value);
+
+
+            // Update player properties directly
+            player.gravity = PLAYER_GRAVITY;
+            player.jumpForce = PLAYER_JUMP_FORCE;
+            player.doubleJumpForce = PLAYER_DOUBLE_JUMP_FORCE;
+            player.tripleJumpForce = PLAYER_TRIPLE_JUMP_FORCE;
+            player.maxHorizontalSpeed = PLAYER_MAX_HORIZONTAL_SPEED;
+
+            // Update display values
+            document.getElementById('initialSpeedValue').textContent = INITIAL_GAME_SPEED;
+            document.getElementById('speedIntervalValue').textContent = SPEED_INCREASE_INTERVAL;
+            document.getElementById('speedAmountValue').textContent = SPEED_INCREASE_AMOUNT;
+            document.getElementById('furnitureSpawnValue').textContent = FURNITURE_SPAWN_INTERVAL;
+            document.getElementById('enemySpawnValue').textContent = ENEMY_SPAWN_INTERVAL;
+            document.getElementById('catnipSpawnIntervalValue').textContent = CATNIP_SPAWN_INTERVAL;
+            document.getElementById('catnipSpawnChanceValue').textContent = CATNIP_SPAWN_CHANCE;
+            document.getElementById('gravityValue').textContent = PLAYER_GRAVITY;
+            document.getElementById('jumpForceValue').textContent = PLAYER_JUMP_FORCE;
+            document.getElementById('doubleJumpForceValue').textContent = PLAYER_DOUBLE_JUMP_FORCE;
+            document.getElementById('tripleJumpForceValue').textContent = PLAYER_TRIPLE_JUMP_FORCE;
+            document.getElementById('horizontalSpeedValue').textContent = PLAYER_MAX_HORIZONTAL_SPEED;
+            document.getElementById('damageOnHitValue').textContent = DAMAGE_ON_HIT_PERCENT;
+            document.getElementById('catnipDamageReductionValue').textContent = CATNIP_DAMAGE_REDUCTION_PERCENT;
+            document.getElementById('catnipHealthHealValue').textContent = CATNIP_HEALTH_HEAL_PERCENT;
+            document.getElementById('catnipMinSpeedDiffValue').textContent = CATNIP_MIN_SPEED_DIFFERENCE_PERCENT;
+
+        }
+
+        // Initialize sliders and values on load
+        window.onload = function() {
+            // Set slider values to match initial constants
+            document.getElementById('initialSpeedSlider').value = INITIAL_GAME_SPEED;
+            document.getElementById('speedIntervalSlider').value = SPEED_INCREASE_INTERVAL;
+            document.getElementById('speedAmountSlider').value = SPEED_INCREASE_AMOUNT;
+            document.getElementById('furnitureSpawnSlider').value = FURNITURE_SPAWN_INTERVAL;
+            document.getElementById('enemySpawnSlider').value = ENEMY_SPAWN_INTERVAL;
+            document.getElementById('catnipSpawnIntervalSlider').value = CATNIP_SPAWN_INTERVAL;
+            document.getElementById('catnipSpawnChanceSlider').value = CATNIP_SPAWN_CHANCE;
+            document.getElementById('gravitySlider').value = PLAYER_GRAVITY;
+            document.getElementById('jumpForceSlider').value = PLAYER_JUMP_FORCE;
+            document.getElementById('doubleJumpForceSlider').value = PLAYER_DOUBLE_JUMP_FORCE;
+            document.getElementById('tripleJumpForceSlider').value = PLAYER_TRIPLE_JUMP_FORCE;
+            document.getElementById('horizontalSpeedSlider').value = PLAYER_MAX_HORIZONTAL_SPEED;
+            document.getElementById('damageOnHitSlider').value = DAMAGE_ON_HIT_PERCENT;
+            document.getElementById('catnipDamageReductionSlider').value = CATNIP_DAMAGE_REDUCTION_PERCENT;
+            document.getElementById('catnipHealthHealSlider').value = CATNIP_HEALTH_HEAL_PERCENT;
+            document.getElementById('catnipMinSpeedDiffSlider').value = CATNIP_MIN_SPEED_DIFFERENCE_PERCENT;
+
+
+            // Call update to set text values
+            updateDifficulty();
+            toggleSliders(); // Hide sliders by default on load
+            updateLifeBar(); // Initialize life bar display
+        };
+
+        // --- Toggle Sliders Function ---
+        function toggleSliders() {
+            const slidersDiv = document.getElementById('difficultySliders');
+            const toggleBtn = document.getElementById('toggleSlidersBtn');
+
+            if (slidersDiv.style.display === 'none' || slidersDiv.style.display === '') {
+                slidersDiv.style.display = 'grid'; // Show as grid
+                toggleBtn.style.right = (slidersDiv.offsetWidth + 20) + 'px'; // Move button to the left of sliders
+                toggleBtn.textContent = 'Hide Sliders';
+            } else {
+                slidersDiv.style.display = 'none'; // Hide
+                toggleBtn.style.right = '10px'; // Reset button position
+                toggleBtn.textContent = 'Show Sliders';
             }
         }
-        
+        // --- End Toggle Sliders Function ---
+
+        // Event listeners
+        canvas.addEventListener('touchstart', (e) => {
+            if (!gameRunning) return;
+            e.preventDefault();
+
+            if (e.changedTouches.length === 1) {
+                const touchX = e.changedTouches[0].clientX;
+                const leftBtnRect = document.getElementById('leftBtn').getBoundingClientRect();
+                const rightBtnRect = document.getElementById('rightBtn').getBoundingClientRect();
+
+                if (touchX >= leftBtnRect.left && touchX <= leftBtnRect.right &&
+                    e.changedTouches[0].clientY >= leftBtnRect.top && e.changedTouches[0].clientY <= leftBtnRect.bottom) {
+                    // Handled by ontouchstart on button
+                } else if (touchX >= rightBtnRect.left && touchX <= rightBtnRect.right &&
+                           e.changedTouches[0].clientY >= rightBtnRect.top && e.changedTouches[0].clientY <= rightBtnRect.bottom) {
+                    // Handled by ontouchstart on button
+                } else {
+                    jump();
+                }
+            }
+        });
+        canvas.addEventListener('click', jump);
+
+        window.addEventListener('keydown', (e) => {
+            if (!gameRunning) return;
+            if (e.code === 'Space') jump();
+            if (e.code === 'KeyA' || e.code === 'ArrowLeft') movePlayer(-1);
+            if (e.code === 'KeyD' || e.code === 'ArrowRight') movePlayer(1);
+        });
+
+        window.addEventListener('keyup', (e) => {
+            if (!gameRunning) return;
+            if (e.code === 'KeyA' || e.code === 'ArrowLeft' || e.code === 'KeyD' || e.code === 'ArrowRight') {
+                stopPlayerMovement();
+            }
+        });
+
+        function movePlayer(direction) {
+            player.velocityX = direction * player.maxHorizontalSpeed;
+        }
+
+        function stopPlayerMovement() {
+            player.velocityX = 0;
+        }
+
+        function jump() {
+            if (!gameRunning) return;
+
+            if (player.grounded) {
+                player.velocityY = player.jumpForce;
+                player.grounded = false;
+                player.onFurniture = null; // Player is no longer on furniture
+                player.jumpsAvailable = 1;
+                if (tripleJumpActive) {
+                    player.jumpsAvailable = 2;
+                }
+            } else if (player.jumpsAvailable > 0) {
+                player.jumpsAvailable--;
+                if (player.jumpsAvailable === 1 && tripleJumpActive) {
+                    player.velocityY = player.doubleJumpForce;
+                } else if (player.jumpsAvailable === 0 && tripleJumpActive) {
+                    player.velocityY = player.tripleJumpForce;
+                } else if (player.jumpsAvailable === 0 && !tripleJumpActive) {
+                    player.velocityY = player.doubleJumpForce;
+                }
+            }
+        }
+
         function startGame() {
             document.getElementById('startScreen').style.display = 'none';
             gameRunning = true;
+            currentLife = 100; // Reset life
+            updateLifeBar(); // Update life bar
             gameLoop();
         }
-        
+
         function restartGame() {
             document.getElementById('gameOver').style.display = 'none';
             score = 0;
-            speed = 5;
+            speed = INITIAL_GAME_SPEED;
             frameCount = 0;
+            distance = 0;
             enemies = [];
             furniture = [];
+            catnips = [];
+            currentLife = 100; // Reset life
+            updateLifeBar(); // Update life bar
+            player.x = 100;
             player.y = ground.y - player.height;
             player.velocityY = 0;
+            player.velocityX = 0;
+            player.grounded = true;
+            player.onFurniture = null; // Reset furniture state
+            player.jumpsAvailable = 1;
+            tripleJumpActive = false;
+            isInvincible = false; // Reset invincibility
+            playerVisible = true; // Ensure player is visible
+            clearTimeout(tripleJumpTimeout);
             gameRunning = true;
             gameLoop();
         }
-        
+
         function spawnFurniture() {
-            if (frameCount % 180 === 0) {
+            if (frameCount % FURNITURE_SPAWN_INTERVAL === 0) {
                 const furnitureTypes = [
-                    { width: 80, height: 40, color: '#8B4513' }, // Couch
-                    { width: 60, height: 60, color: '#654321' }, // Table
-                    { width: 70, height: 50, color: '#D2691E' }  // Chair
+                    { type: 'couch', width: 80, height: 40, color: '#8B4513' },
+                    { type: 'bookshelf', width: 50, height: 70, color: '#654321' },
+                    { type: 'coffeeTable', width: 60, height: 30, color: '#D2691E' },
+                    { type: 'floatingShelf', width: 100, height: 15, color: '#A0522D', minHeight: 150, maxHeight: 300 }
                 ];
-                
+
                 const type = furnitureTypes[Math.floor(Math.random() * furnitureTypes.length)];
+                let furnitureY;
+
+                if (type.type === 'floatingShelf') {
+                    furnitureY = ground.y - type.height - type.minHeight - (Math.random() * (type.maxHeight - type.minHeight));
+                } else {
+                    furnitureY = ground.y - type.height;
+                }
+
                 furniture.push({
                     x: canvas.width,
-                    y: ground.y - type.height,
+                    y: furnitureY,
                     width: type.width,
                     height: type.height,
-                    color: type.color
+                    color: type.color,
+                    type: type.type
                 });
             }
         }
-        
+
         function spawnEnemy() {
-            if (frameCount % 120 === 0) {
+            if (frameCount % ENEMY_SPAWN_INTERVAL === 0) {
                 const types = Object.keys(enemyTypes);
                 const type = types[Math.floor(Math.random() * types.length)];
                 const enemyData = enemyTypes[type];
-                
+
                 enemies.push({
                     x: canvas.width,
                     y: ground.y - enemyData.height,
@@ -214,12 +757,51 @@
                     height: enemyData.height,
                     color: enemyData.color,
                     type: type,
-                    speed: enemyData.speed,
+                    speedMultiplier: enemyData.speedMultiplier,
                     points: enemyData.points
                 });
             }
         }
-        
+
+        function spawnCatnip() {
+            if (frameCount % CATNIP_SPAWN_INTERVAL === 0 && Math.random() < CATNIP_SPAWN_CHANCE && catnips.length < 1) {
+                const catnipSize = 25;
+                const catnipMinY = player.y - player.jumpForce * 1.5;
+                const catnipMaxY = ground.y - player.height - 20;
+
+                catnips.push({
+                    x: canvas.width,
+                    y: Math.random() * (catnipMaxY - catnipMinY) + catnipMinY,
+                    width: catnipSize,
+                    height: catnipSize,
+                    color: '#00FF00'
+                });
+            }
+        }
+
+        function updateCatnips() {
+            catnips = catnips.filter(catnip => {
+                // Catnip speed will be current game speed minus a minimum difference,
+                // scaled by player's max horizontal speed to ensure it's catchable backwards.
+                const catnipAdjustedSpeed = speed - (player.maxHorizontalSpeed * (CATNIP_MIN_SPEED_DIFFERENCE_PERCENT / 100));
+                catnip.x -= Math.max(0.1, catnipAdjustedSpeed); // Ensure it always moves forward, albeit slowly.
+
+
+                if (player.x < catnip.x + catnip.width &&
+                    player.x + player.width > catnip.x &&
+                    player.y < catnip.y + catnip.height &&
+                    player.y + player.height > catnip.y) {
+
+                    activateTripleJump();
+                    healPlayer(CATNIP_HEALTH_HEAL_PERCENT);
+                    triggerCatnipEffect(); // Trigger visual effects
+                    return false;
+                }
+
+                return catnip.x + catnip.width > 0;
+            });
+        }
+
         function updateClouds() {
             clouds.forEach(cloud => {
                 cloud.x -= cloud.speed;
@@ -228,136 +810,351 @@
                 }
             });
         }
-        
+
         function updatePlayer() {
-            // Apply gravity
-            player.velocityY += 0.8;
+            player.velocityY += player.gravity;
             player.y += player.velocityY;
-            
+
+            // If player is on furniture, move with it
+            if (player.onFurniture) {
+                // Player's horizontal position relative to the furniture's moving X
+                // We keep player's horizontal position relative to the furniture's left edge
+                // This makes the player "stick" and move with the platform
+                player.x = player.onFurniture.x + player.onFurniture.playerOffsetX;
+                player.y = player.onFurniture.y - player.height; // Keep player on top
+                player.grounded = true;
+                player.jumpsAvailable = tripleJumpActive ? 2 : 1;
+                player.velocityY = 0; // No gravity effect if stuck to furniture
+            } else {
+                player.x += player.velocityX; // Apply horizontal movement only if not stuck
+
+                // Keep player within canvas bounds
+                if (player.x < 0) {
+                    player.x = 0;
+                }
+                if (player.x + player.width > canvas.width) {
+                    player.x = canvas.width - player.width;
+                }
+            }
+
+
+            player.grounded = false; // Reset grounded state for current frame
+
             // Check ground collision
-            if (player.y + player.height > ground.y) {
+            if (player.y + player.height >= ground.y) {
                 player.y = ground.y - player.height;
                 player.velocityY = 0;
                 player.grounded = true;
-                player.jumping = false;
+                player.jumpsAvailable = tripleJumpActive ? 2 : 1;
+                player.onFurniture = null; // Not on furniture if on ground
             }
-            
-            // Check furniture collision
-            player.grounded = false;
-            
-            // Check ground first
-            if (player.y + player.height >= ground.y) {
-                player.grounded = true;
-            }
-            
-            // Check furniture
+
+            // Check furniture collision (player landing on top)
+            let landedOnFurnitureThisFrame = false;
             furniture.forEach(item => {
+                const playerBottom = player.y + player.height;
+                const playerNextBottom = playerBottom + player.velocityY;
+
                 if (player.x < item.x + item.width &&
                     player.x + player.width > item.x &&
-                    player.y < item.y + item.height &&
-                    player.y + player.height > item.y) {
-                    
-                    if (player.velocityY > 0 && player.y < item.y) {
+                    playerNextBottom >= item.y &&
+                    playerBottom <= item.y)
+                {
+                    if (player.velocityY >= 0) {
                         player.y = item.y - player.height;
                         player.velocityY = 0;
                         player.grounded = true;
-                        player.jumping = false;
+                        player.onFurniture = item;
+                        player.onFurniture.playerOffsetX = player.x - item.x; // Store player's offset from furniture
+                        player.jumpsAvailable = tripleJumpActive ? 2 : 1;
+                        landedOnFurnitureThisFrame = true;
                     }
                 }
             });
+
+            // If player was on furniture but isn't touching it anymore (e.g., it moved away, or they jumped)
+            if (player.onFurniture && !landedOnFurnitureThisFrame && player.velocityY !== 0) {
+                player.onFurniture = null;
+            }
+
+            // Handle invincibility blink
+            if (isInvincible) {
+                const currentTime = performance.now();
+                if (currentTime - lastBlinkTime > invincibilityBlinkRate) {
+                    playerVisible = !playerVisible; // Toggle visibility
+                    lastBlinkTime = currentTime;
+                }
+            } else {
+                playerVisible = true; // Ensure player is always visible when not invincible
+            }
         }
-        
+
+        function handlePlayerDamage(damageAmount) {
+            if (isInvincible) return; // Do nothing if invincible
+
+            let actualDamage = damageAmount;
+            if (tripleJumpActive) {
+                actualDamage *= (100 - CATNIP_DAMAGE_REDUCTION_PERCENT) / 100; // Apply reduction
+            }
+            currentLife -= actualDamage;
+            if (currentLife < 0) {
+                currentLife = 0;
+            }
+            updateLifeBar();
+
+            if (currentLife <= 0) {
+                gameOver();
+            } else {
+                // Activate invincibility
+                isInvincible = true;
+                playerVisible = false; // Start invisible
+                lastBlinkTime = performance.now(); // Reset blink timer
+                setTimeout(() => {
+                    isInvincible = false;
+                    playerVisible = true; // Ensure visibility after invincibility ends
+                }, invincibilityDuration);
+            }
+        }
+
+        function healPlayer(healAmountPercent) {
+            currentLife += healAmountPercent;
+            if (currentLife > 100) {
+                currentLife = 100;
+            }
+            updateLifeBar();
+        }
+
+        function updateLifeBar() {
+            lifeBar.style.width = currentLife + '%';
+            currentLifeSpan.textContent = Math.floor(currentLife);
+
+            if (currentLife > 60) {
+                lifeBar.style.background = 'linear-gradient(to right, #4CAF50, #8BC34A)'; // Green
+            } else if (currentLife > 25) {
+                lifeBar.style.background = 'linear-gradient(to right, #FFC107, #FF9800)'; // Orange
+            } else {
+                lifeBar.style.background = 'linear-gradient(to right, #F44336, #D32F2F)'; // Red
+            }
+        }
+
         function updateEnemies() {
             enemies = enemies.filter(enemy => {
-                enemy.x -= speed * enemy.speed;
-                
-                // Check collision with player
+                enemy.x -= speed * enemy.speedMultiplier;
+
                 if (player.x < enemy.x + enemy.width &&
                     player.x + player.width > enemy.x &&
                     player.y < enemy.y + enemy.height &&
                     player.y + player.height > enemy.y) {
-                    gameOver();
+
+                    handlePlayerDamage(DAMAGE_ON_HIT_PERCENT);
+                    // Crucial change: Enemies are NOT removed when hit. They pass through.
+                    // return false; // This line is removed to keep enemies on screen after hit
                 }
-                
-                // Remove if off screen and add points
+
                 if (enemy.x + enemy.width < 0) {
                     score += enemy.points;
                     return false;
                 }
-                
+
                 return true;
             });
         }
-        
+
         function updateFurniture() {
             furniture = furniture.filter(item => {
                 item.x -= speed;
                 return item.x + item.width > 0;
             });
         }
-        
-        function drawCat(x, y, width, height, color, isPlayer = false) {
+
+        // --- NEW: Catnip visual effect trigger ---
+        function triggerCatnipEffect() {
+            // Flash screen
+            catnipFlashDiv.style.opacity = 1;
+            setTimeout(() => {
+                catnipFlashDiv.style.opacity = 0;
+            }, 100); // Flash for 100ms
+
+            // Show text
+            catnipTextDiv.style.opacity = 1;
+            setTimeout(() => {
+                catnipTextDiv.style.opacity = 0;
+            }, 1000); // Show text for 1 second
+
+            // Shake screen (apply class to body or canvas)
+            document.body.classList.add('shake');
+            setTimeout(() => {
+                document.body.classList.remove('shake');
+            }, 200); // Shake for 200ms
+        }
+        // --- END NEW ---
+
+        function drawCouch(x, y, width, height, color) {
             ctx.fillStyle = color;
-            
-            // Body
+            ctx.fillRect(x, y + height * 0.2, width, height * 0.8);
+            ctx.fillRect(x, y, width, height * 0.3);
+            ctx.fillStyle = lightenColor(color, 20);
+            ctx.fillRect(x + width * 0.05, y + height * 0.3, width * 0.9, height * 0.2);
+            ctx.fillStyle = darkenColor(color, 30);
+            ctx.fillRect(x + width * 0.1, y + height - 5, width * 0.1, 5);
+            ctx.fillRect(x + width * 0.8, y + height - 5, width * 0.1, 5);
+        }
+
+        function drawBookshelf(x, y, width, height, color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, width, height);
+            ctx.fillStyle = darkenColor(color, 20);
+            const numShelves = 3;
+            const shelfHeight = height / (numShelves + 1);
+            for (let i = 1; i <= numShelves; i++) {
+                ctx.fillRect(x, y + shelfHeight * i - 2, width, 4);
+            }
+        }
+
+        function drawCoffeeTable(x, y, width, height, color) {
+            ctx.fillStyle = lightenColor(color, 20);
+            ctx.beginPath();
+            ctx.ellipse(x + width / 2, y + height * 0.2, width / 2, height * 0.2, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y + height * 0.2, width, height * 0.8 - (height * 0.2));
+            ctx.fillStyle = darkenColor(color, 30);
+            const legWidth = width * 0.08;
+            const legHeight = height * 0.6;
+            ctx.fillRect(x + width * 0.1, y + height * 0.4, legWidth, legHeight);
+            ctx.fillRect(x + width * 0.82, y + height * 0.4, legWidth, legHeight);
+        }
+
+        function drawFloatingShelf(x, y, width, height, color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, width, height);
+            ctx.fillStyle = darkenColor(color, 20);
+            ctx.fillRect(x, y + height * 0.8, width, height * 0.2);
+        }
+
+        function darkenColor(hex, percent) {
+            let f=parseInt(hex.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=(f>>8)&0x00FF,B=f&0x0000FF;
+            return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+Math.round((t-B)*p)+B).toString(16).slice(1);
+        }
+        function lightenColor(hex, percent) {
+            return darkenColor(hex, -percent);
+        }
+
+
+        function drawCatnip(x, y, width, height, color) {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+
+            const centerX = x + width / 2;
+            const centerY = y + height / 2;
+            const stemLength = height * 0.4;
+            const stemWidth = width * 0.1;
+
+            ctx.fillRect(centerX - stemWidth / 2, centerY + height * 0.2, stemWidth, stemLength);
+
+            ctx.moveTo(centerX, centerY - height * 0.5);
+
+            ctx.quadraticCurveTo(centerX + width * 0.3, centerY - height * 0.4, centerX + width * 0.5, centerY - height * 0.1);
+            ctx.quadraticCurveTo(centerX + width * 0.6, centerY + height * 0.1, centerX + width * 0.4, centerY + height * 0.3);
+
+            ctx.quadraticCurveTo(centerX + width * 0.5, centerY + height * 0.4, centerX + width * 0.2, centerY + height * 0.5);
+
+            ctx.lineTo(centerX, centerY + height * 0.2);
+
+            ctx.quadraticCurveTo(centerX - width * 0.2, centerY + height * 0.5, centerX - width * 0.4, centerY + height * 0.3);
+            ctx.quadraticCurveTo(centerX - width * 0.6, centerY + height * 0.1, centerX - width * 0.5, centerY - height * 0.1);
+            ctx.quadraticCurveTo(centerX - width * 0.3, centerY - height * 0.4, centerX, centerY - height * 0.5);
+
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.strokeStyle = 'rgba(0, 100, 0, 0.7)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY + height * 0.2);
+            ctx.lineTo(centerX, centerY - height * 0.4);
+            ctx.moveTo(centerX, centerY + height * 0.2);
+            ctx.lineTo(centerX + width * 0.4, centerY + height * 0.3);
+            ctx.moveTo(centerX, centerY + height * 0.2);
+            ctx.lineTo(centerX - width * 0.4, centerY + height * 0.3);
+            ctx.stroke();
+        }
+
+        function drawCat(x, y, width, height, color, isPlayer = false) {
+            if (isPlayer) {
+                // Apply global alpha for blinking effect
+                if (isInvincible && !playerVisible) {
+                    ctx.globalAlpha = 0.4; // Make player translucent
+                } else {
+                    ctx.globalAlpha = 1.0; // Fully opaque
+                }
+
+                if (tripleJumpActive) {
+                    ctx.save();
+                    ctx.shadowBlur = 15;
+                    ctx.shadowColor = 'lime';
+                }
+            }
+
+            ctx.fillStyle = color;
+
             ctx.fillRect(x + 5, y + 10, width - 10, height - 10);
-            
-            // Head
+
             ctx.beginPath();
             ctx.arc(x + width - 10, y + 15, 10, 0, Math.PI * 2);
             ctx.fill();
-            
-            // Ears
+
             ctx.beginPath();
             ctx.moveTo(x + width - 15, y + 5);
             ctx.lineTo(x + width - 10, y);
             ctx.lineTo(x + width - 5, y + 5);
             ctx.fill();
-            
+
             ctx.beginPath();
             ctx.moveTo(x + width - 20, y + 5);
             ctx.lineTo(x + width - 15, y);
             ctx.lineTo(x + width - 10, y + 5);
             ctx.fill();
-            
-            // Eyes
+
             if (isPlayer) {
-                ctx.fillStyle = '#00FF00'; // Player has green eyes
+                ctx.fillStyle = '#00FF00';
             } else {
-                ctx.fillStyle = '#FF0000'; // Enemies have red eyes
+                ctx.fillStyle = '#FF0000';
             }
             ctx.fillRect(x + width - 12, y + 12, 2, 2);
             ctx.fillRect(x + width - 8, y + 12, 2, 2);
-            
-            // Tail
+
             ctx.strokeStyle = color;
             ctx.lineWidth = 3;
             ctx.beginPath();
             ctx.moveTo(x, y + 15);
             ctx.quadraticCurveTo(x - 5, y + 5, x - 10, y + 10);
             ctx.stroke();
+
+            if (isPlayer) {
+                if (tripleJumpActive) {
+                    ctx.restore(); // Restore to remove shadow
+                }
+                ctx.globalAlpha = 1.0; // Reset global alpha for other drawings
+            }
         }
-        
+
         function drawDog(x, y, width, height, color) {
             ctx.fillStyle = color;
-            
-            // Body
+
             ctx.fillRect(x + 10, y + 15, width - 20, height - 15);
-            
-            // Head
+
             ctx.beginPath();
             ctx.arc(x + 8, y + 10, 8, 0, Math.PI * 2);
             ctx.fill();
-            
-            // Ears
+
             ctx.beginPath();
             ctx.ellipse(x + 5, y + 5, 5, 8, 0, 0, Math.PI * 2);
             ctx.fill();
             ctx.beginPath();
             ctx.ellipse(x + 11, y + 5, 5, 8, 0, 0, Math.PI * 2);
             ctx.fill();
-            
-            // Tail (wagging)
+
             const tailWag = Math.sin(frameCount * 0.1) * 10;
             ctx.strokeStyle = color;
             ctx.lineWidth = 4;
@@ -366,18 +1163,15 @@
             ctx.quadraticCurveTo(x + width, y + 15 + tailWag, x + width - 5, y + 10 + tailWag);
             ctx.stroke();
         }
-        
+
         function drawVacuum(x, y, width, height, color) {
             ctx.fillStyle = color;
-            
-            // Body
+
             ctx.fillRect(x, y + 10, width - 10, height - 10);
-            
-            // Handle
+
             ctx.fillRect(x + width/2 - 5, y, 10, 10);
             ctx.fillRect(x + width/2 - 2, y - 5, 4, 5);
-            
-            // Wheels
+
             ctx.fillStyle = '#333';
             ctx.beginPath();
             ctx.arc(x + 10, y + height - 5, 5, 0, Math.PI * 2);
@@ -385,27 +1179,23 @@
             ctx.beginPath();
             ctx.arc(x + width - 15, y + height - 5, 5, 0, Math.PI * 2);
             ctx.fill();
-            
-            // Face (friendly but scary to cats)
+
             ctx.fillStyle = '#FFF';
             ctx.fillRect(x + width - 15, y + 15, 10, 3);
             ctx.fillStyle = '#000';
             ctx.fillRect(x + width - 13, y + 16, 2, 2);
             ctx.fillRect(x + width - 9, y + 16, 2, 2);
         }
-        
+
         function draw() {
-            // Clear canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw sky gradient
+
             const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
             gradient.addColorStop(0, '#87CEEB');
             gradient.addColorStop(1, '#98D8E8');
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw clouds
+
             ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
             clouds.forEach(cloud => {
                 ctx.beginPath();
@@ -414,31 +1204,40 @@
                 ctx.arc(cloud.x + cloud.width/1.5, cloud.y, cloud.width/3, 0, Math.PI * 2);
                 ctx.fill();
             });
-            
-            // Draw ground
+
             ctx.fillStyle = '#8B7355';
             ctx.fillRect(0, ground.y, canvas.width, canvas.height - ground.y);
-            
-            // Draw grass
+
             ctx.fillStyle = '#228B22';
             for (let i = 0; i < canvas.width; i += 20) {
                 const grassHeight = 5 + Math.sin(frameCount * 0.05 + i * 0.1) * 3;
                 ctx.fillRect(i, ground.y - grassHeight, 15, grassHeight);
             }
-            
-            // Draw furniture
-            ctx.fillStyle = '#8B4513';
+
             furniture.forEach(item => {
-                ctx.fillStyle = item.color;
-                ctx.fillRect(item.x, item.y, item.width, item.height);
-                
-                // Add details
-                ctx.fillStyle = '#654321';
-                ctx.fillRect(item.x, item.y, item.width, 5); // Top edge
-                ctx.fillRect(item.x, item.y + item.height - 5, item.width, 5); // Bottom edge
+                switch (item.type) {
+                    case 'couch':
+                        drawCouch(item.x, item.y, item.width, item.height, item.color);
+                        break;
+                    case 'bookshelf':
+                        drawBookshelf(item.x, item.y, item.width, item.height, item.color);
+                        break;
+                    case 'coffeeTable':
+                        drawCoffeeTable(item.x, item.y, item.width, item.height, item.color);
+                        break;
+                    case 'floatingShelf':
+                        drawFloatingShelf(item.x, item.y, item.width, item.height, item.color);
+                        break;
+                    default:
+                        ctx.fillStyle = item.color;
+                        ctx.fillRect(item.x, item.y, item.width, item.height);
+                }
             });
-            
-            // Draw enemies
+
+            catnips.forEach(catnip => {
+                drawCatnip(catnip.x, catnip.y, catnip.width, catnip.height, catnip.color);
+            });
+
             enemies.forEach(enemy => {
                 switch(enemy.type) {
                     case 'cat':
@@ -452,54 +1251,81 @@
                         break;
                 }
             });
-            
-            // Draw player (Newton)
+
             drawCat(player.x, player.y, player.width, player.height, player.color, true);
-            
-            // Update score display
+
             document.getElementById('score').textContent = score;
+            document.getElementById('distance').textContent = Math.floor(distance);
         }
-        
+
         function gameLoop() {
             if (!gameRunning) return;
-            
+
             frameCount++;
-            
-            // Increase speed gradually
-            if (frameCount % 500 === 0) {
-                speed += 0.5;
+
+            if (frameCount % SPEED_INCREASE_INTERVAL === 0) {
+                speed += SPEED_INCREASE_AMOUNT;
             }
-            
+
+            distance += speed / 60;
+
             updatePlayer();
             updateEnemies();
             updateFurniture();
+            updateCatnips();
             updateClouds();
-            
+
             spawnFurniture();
             spawnEnemy();
-            
+            spawnCatnip();
+
             draw();
-            
+
             requestAnimationFrame(gameLoop);
         }
-        
+
+        function activateTripleJump() {
+            console.log("Triple Jump Activated!");
+            tripleJumpActive = true;
+            player.jumpsAvailable = 2;
+            clearTimeout(tripleJumpTimeout);
+            tripleJumpTimeout = setTimeout(() => {
+                deactivateTripleJump();
+            }, TRIPLE_JUMP_DURATION);
+        }
+
+        function deactivateTripleJump() {
+            console.log("Triple Jump Deactivated.");
+            tripleJumpActive = false;
+            if (!player.grounded) {
+                player.jumpsAvailable = 1;
+            } else {
+                player.jumpsAvailable = 1;
+            }
+        }
+
         function gameOver() {
             gameRunning = false;
             document.getElementById('finalScore').textContent = score;
             document.getElementById('gameOver').style.display = 'block';
-            
+
             if (score > highScore) {
                 highScore = score;
                 localStorage.setItem('highScore', highScore);
                 document.getElementById('highScore').textContent = highScore;
             }
+
+            clearTimeout(tripleJumpTimeout);
+            tripleJumpActive = false;
         }
-        
-        // Handle window resize
+
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             ground.y = canvas.height - 100;
+            if (player.y + player.height > ground.y) {
+                player.y = ground.y - player.height;
+            }
         });
     </script>
 </body>
